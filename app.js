@@ -15,9 +15,11 @@ app.use(express.json());
 
 app.use('/api/v1', mainRouter)
 
+//custom middlewares
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
+//port from .env file
 const port = process.env.PORT || 3000;
 
 const start = async () => {

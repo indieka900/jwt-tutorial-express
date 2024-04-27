@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken')
+
+//to retrieve JWT Secret from .env file
 require('dotenv').config()
 
 const CustomAPIError = require('../errors/custom-error')
@@ -9,6 +11,7 @@ const login = async (req, res) => {
         throw new CustomAPIError('Please provide username and password',400)
     }
 
+    //custom ID since we're not using any DBMS
     const id = new Date().getDate()
 
     const token = jwt.sign({id, username},process.env.JWT_SECRET,{expiresIn:'30d'})
